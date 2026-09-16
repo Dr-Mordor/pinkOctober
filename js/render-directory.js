@@ -12,7 +12,6 @@ function pathTitle(key) {
 
 export function renderResultsHeading(el, path) {
 	el.innerHTML = `
-		<span class="results-heading-icon" aria-hidden="true">${path.icon}</span>
 		<div>
 			<h2>${path.title}</h2>
 			<p>${path.desc}</p>
@@ -31,9 +30,9 @@ function institutionCard(inst) {
 	card.setAttribute("role", "listitem");
 
 	const metaItems = [
-		inst.area && `<li>📍 ${escapeHtml(inst.area)}</li>`,
-		inst.address && `<li>🏢 ${escapeHtml(inst.address)}</li>`,
-		inst.hours && `<li>🕐 ${escapeHtml(inst.hours)}</li>`,
+		inst.area && `<li>المنطقة: ${escapeHtml(inst.area)}</li>`,
+		inst.address && `<li>العنوان: ${escapeHtml(inst.address)}</li>`,
+		inst.hours && `<li>أوقات الدوام: ${escapeHtml(inst.hours)}</li>`,
 	]
 		.filter(Boolean)
 		.join("");
@@ -43,12 +42,12 @@ function institutionCard(inst) {
 		.join("");
 
 	const detailRows = [
-		inst.pricing && ["💰 التكلفة", inst.pricing],
-		inst.freeService && ["🆓 الخدمة المجانية", inst.freeService],
-		inst.insurance && ["🩹 التأمين الصحي", inst.insurance],
-		inst.referral && ["📄 التحويل المطلوب", inst.referral],
-		inst.booking && ["📅 الحجز والمواعيد", inst.booking],
-		inst.requirements && ["📝 المتطلبات", inst.requirements],
+		inst.pricing && ["التكلفة", inst.pricing],
+		inst.freeService && ["الخدمة المجانية", inst.freeService],
+		inst.insurance && ["التأمين الصحي", inst.insurance],
+		inst.referral && ["التحويل المطلوب", inst.referral],
+		inst.booking && ["الحجز والمواعيد", inst.booking],
+		inst.requirements && ["المتطلبات", inst.requirements],
 	]
 		.filter(Boolean)
 		.map(([label, value]) => `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd>`)
@@ -60,12 +59,12 @@ function institutionCard(inst) {
 
 	const actions = [
 		inst.phone &&
-			`<a class="btn btn-call" href="tel:${escapeHtml(inst.phone.replace(/[^\d+]/g, ""))}">📞 اتصال</a>`,
+			`<a class="btn btn-call" href="tel:${escapeHtml(inst.phone.replace(/[^\d+]/g, ""))}">اتصال</a>`,
 		inst.whatsapp &&
-			`<a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(inst.whatsapp.replace(/[^\d]/g, ""))}" target="_blank" rel="noopener">💬 واتساب</a>`,
+			`<a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(inst.whatsapp.replace(/[^\d]/g, ""))}" target="_blank" rel="noopener">واتساب</a>`,
 		inst.email &&
-			`<a class="btn btn-email" href="mailto:${escapeHtml(inst.email)}">✉️ بريد إلكتروني</a>`,
-		`<a class="btn btn-directions" href="${mapsUrl(inst)}" target="_blank" rel="noopener">🗺️ الاتجاهات</a>`,
+			`<a class="btn btn-email" href="mailto:${escapeHtml(inst.email)}">بريد إلكتروني</a>`,
+		`<a class="btn btn-directions" href="${mapsUrl(inst)}" target="_blank" rel="noopener">الاتجاهات</a>`,
 	]
 		.filter(Boolean)
 		.join("");
@@ -85,7 +84,7 @@ function institutionCard(inst) {
 		${services ? `<ul class="institution-services">${services}</ul>` : ""}
 		${metaItems ? `<ul class="institution-meta">${metaItems}</ul>` : ""}
 		${detailRows ? `<dl class="institution-details">${detailRows}</dl>` : ""}
-		${inst.notes ? `<p class="institution-notes">💬 ${escapeHtml(inst.notes)}</p>` : ""}
+		${inst.notes ? `<p class="institution-notes">${escapeHtml(inst.notes)}</p>` : ""}
 		<div class="institution-actions">${actions}</div>
 		${verification}
 		${tags ? `<div class="institution-tags">${tags}</div>` : ""}

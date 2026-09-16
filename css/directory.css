@@ -1,14 +1,6 @@
 @layer components {
 	.results-heading {
-		display: flex;
-		align-items: flex-start;
-		gap: var(--space-3);
 		margin-block-end: var(--space-6);
-	}
-
-	.results-heading-icon {
-		font-size: var(--fs-2xl);
-		line-height: 1;
 	}
 
 	.results-heading h2 {

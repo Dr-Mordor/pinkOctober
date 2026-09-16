@@ -8,7 +8,6 @@ export function renderJourney(container, paths, onSelect) {
 		card.setAttribute("role", "listitem");
 
 		card.innerHTML = `
-			<span class="journey-card-icon" aria-hidden="true">${path.icon}</span>
 			<h3>${path.title}</h3>
 			<p>${path.desc}</p>
 		`;
