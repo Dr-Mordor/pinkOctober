@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>QR Code · خريطة الأمان</title>
+	<meta name="description" content="رمز QR ثابت لحملة أكتوبر الوردي 2026 — يوجّه مباشرة إلى خريطة الأمان." />
+	<link rel="stylesheet" href="css/tokens.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		@layer components {
+			.qr-page {
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: var(--space-5);
+				padding: var(--space-6);
+				text-align: center;
+			}
+
+			.qr-page img {
+				width: min(60vw, 320px);
+				height: auto;
+				border: 1px solid var(--color-border);
+				border-radius: var(--radius-lg);
+				padding: var(--space-5);
+				background: #fff;
+			}
+
+			.qr-page h1 {
+				color: var(--color-primary-dark);
+				font-size: var(--fs-xl);
+				margin: 0;
+			}
+
+			.qr-page .qr-url {
+				direction: ltr;
+				font-size: var(--fs-sm);
+				color: var(--color-text-muted);
+			}
+
+			.qr-page .qr-download {
+				display: flex;
+				gap: var(--space-3);
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.qr-page .qr-download a {
+				color: var(--color-primary-dark);
+				font-weight: 700;
+				text-decoration: underline;
+			}
+
+			.qr-page .qr-eyebrow {
+				color: var(--color-accent);
+				font-weight: 700;
+				font-size: var(--fs-sm);
+				margin: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="qr-page">
+		<p class="qr-eyebrow">حملة أكتوبر الوردي 2026 · خريطة الأمان</p>
+		<h1>«في واحدة بتحبيها… اطمنتي عليها؟»</h1>
+		<img src="assets/qr-code.svg" alt="رمز QR يوجّه إلى موقع خريطة الأمان" width="320" height="320" />
+		<p class="qr-url">pinkoctober.tonystark-webmaster.com</p>
+		<div class="qr-download">
+			<a href="assets/qr-code.svg" download>تحميل SVG (للطباعة)</a>
+			<a href="assets/qr-code.png" download>تحميل PNG</a>
+		</div>
+	</div>
+</body>
+</html>
