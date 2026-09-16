@@ -1,0 +1,55 @@
+@layer components {
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-5);
+		border-radius: var(--radius-pill);
+		border: 1px solid transparent;
+		background: var(--color-primary);
+		color: #fff;
+		font-weight: 700;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.btn-call {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.browse-other {
+		display: flex;
+		width: fit-content;
+		margin: var(--space-6) auto 0;
+		background: var(--color-surface);
+		color: var(--color-primary-dark);
+		border: 1px solid var(--color-border);
+	}
+
+	.back-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		flex-shrink: 0;
+		border-radius: var(--radius-pill);
+		border: 1px solid var(--color-border);
+		background: var(--color-surface);
+		color: var(--color-primary-dark);
+		font-size: var(--fs-md);
+		cursor: pointer;
+	}
+
+	@media (hover: hover) {
+		.btn:hover {
+			background: var(--color-primary-dark);
+		}
+
+		.browse-other:hover,
+		.back-btn:hover {
+			background: var(--color-primary-soft);
+		}
+	}
+}

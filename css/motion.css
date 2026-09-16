@@ -1,0 +1,44 @@
+@layer motion {
+	.view-enter {
+		animation: view-in 0.35s ease;
+	}
+
+	@keyframes view-in {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	.journey-card,
+	.institution-card {
+		opacity: 0;
+		transform: translateY(8px);
+		animation: reveal 0.4s ease forwards;
+	}
+
+	@keyframes reveal {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.view-enter,
+		.journey-card,
+		.institution-card {
+			animation: none;
+			opacity: 1;
+			transform: none;
+		}
+
+		.journey-card:hover {
+			transform: none;
+		}
+	}
+}

@@ -1,0 +1,79 @@
+@layer components {
+	.eyebrow {
+		text-align: center;
+		font-size: var(--fs-sm);
+		font-weight: 700;
+		color: var(--color-primary-dark);
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
+	}
+
+	.view-home h1 {
+		text-align: center;
+		color: var(--color-primary-dark);
+		max-width: 20ch;
+		margin-inline: auto;
+	}
+
+	.lead {
+		text-align: center;
+		max-width: 44ch;
+		margin-inline: auto;
+		font-size: var(--fs-md);
+	}
+
+	.journey-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+		gap: var(--space-4);
+		margin-block-start: var(--space-6);
+	}
+
+	.journey-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-2);
+		text-align: start;
+		width: 100%;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--space-5);
+		cursor: pointer;
+		transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+	}
+
+	.journey-card:active {
+		transform: translateY(0);
+		background: var(--color-primary-soft);
+	}
+
+	@media (hover: hover) {
+		.journey-card:hover {
+			border-color: var(--color-primary);
+			box-shadow: var(--shadow-sm);
+			transform: translateY(-2px);
+		}
+	}
+
+	.journey-card-icon {
+		font-size: var(--fs-xl);
+	}
+
+	.journey-card h3 {
+		margin: 0;
+		color: var(--color-primary-dark);
+	}
+
+	.journey-card p {
+		margin: 0;
+		font-size: var(--fs-sm);
+	}
+
+	.home-footnote {
+		text-align: center;
+		font-size: var(--fs-sm);
+		margin-block-start: var(--space-7);
+	}
+}

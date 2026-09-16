@@ -1,0 +1,86 @@
+[
+	{
+		"id": "example-screening-center",
+		"isPlaceholder": true,
+		"name": "مثال: مركز الفحص المبكر",
+		"type": "مركز فحص",
+		"area": "نابلس - وسط المدينة",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0000",
+		"hours": "يُستبدل بأوقات الدوام الفعلية",
+		"notes": "بيانات نموذجية لتجربة الموقع، بانتظار اعتماد القائمة الرسمية.",
+		"pathTags": ["reassurance", "evaluation"]
+	},
+	{
+		"id": "example-imaging-center",
+		"isPlaceholder": true,
+		"name": "مثال: مركز الأشعة والتصوير",
+		"type": "تصوير وأشعة",
+		"area": "نابلس",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0001",
+		"hours": "",
+		"notes": "بيانات نموذجية لتجربة الموقع.",
+		"pathTags": ["imaging"]
+	},
+	{
+		"id": "example-diagnostics-lab",
+		"isPlaceholder": true,
+		"name": "مثال: مختبر الخزعة والفحص النسيجي",
+		"type": "مختبر تشخيصي",
+		"area": "نابلس",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0002",
+		"hours": "",
+		"notes": "بيانات نموذجية لتجربة الموقع.",
+		"pathTags": ["diagnosis"]
+	},
+	{
+		"id": "example-oncology-center",
+		"isPlaceholder": true,
+		"name": "مثال: مركز علاج الأورام",
+		"type": "علاج الأورام",
+		"area": "نابلس",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0003",
+		"hours": "",
+		"notes": "بيانات نموذجية لتجربة الموقع.",
+		"pathTags": ["treatment"]
+	},
+	{
+		"id": "example-psychosocial-support",
+		"isPlaceholder": true,
+		"name": "مثال: جمعية الدعم النفسي والاجتماعي",
+		"type": "دعم نفسي واجتماعي",
+		"area": "نابلس",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0004",
+		"hours": "",
+		"notes": "بيانات نموذجية لتجربة الموقع.",
+		"pathTags": ["psychosocial"]
+	},
+	{
+		"id": "example-navigation-service",
+		"isPlaceholder": true,
+		"name": "مثال: خدمة الإرشاد ومرافقة المريضات",
+		"type": "إرشاد ومرافقة",
+		"area": "نابلس",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0005",
+		"hours": "",
+		"notes": "بيانات نموذجية لتجربة الموقع.",
+		"pathTags": ["navigation"]
+	},
+	{
+		"id": "example-palliative-homecare",
+		"isPlaceholder": true,
+		"name": "مثال: خدمة الرعاية التلطيفية والمنزلية",
+		"type": "رعاية تلطيفية ومنزلية",
+		"area": "نابلس",
+		"address": "يُستبدل بالعنوان الفعلي",
+		"phone": "09-000-0006",
+		"hours": "",
+		"notes": "بيانات نموذجية لتجربة الموقع.",
+		"pathTags": ["palliative"]
+	}
+]
