@@ -57,10 +57,6 @@
 		}
 	}
 
-	.journey-card-icon {
-		font-size: var(--fs-xl);
-	}
-
 	.journey-card h3 {
 		margin: 0;
 		color: var(--color-primary-dark);
