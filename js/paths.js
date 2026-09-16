@@ -40,3 +40,10 @@ export const PATHS = [
 		desc: "أين أجد الخدمة المناسبة؟",
 	},
 ];
+
+// Both the results header and the path tag under each institution card need
+// to turn a key back into its Arabic title — one lookup here instead of a
+// `PATHS.find(...)` copied at every call site.
+export function findPath(key) {
+	return PATHS.find((path) => path.key === key);
+}
