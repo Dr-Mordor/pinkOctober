@@ -1,4 +1,6 @@
 @layer motion {
+	/* script.js re-adds this class on every view switch (home <-> results,
+	   and each back/forward) to replay the entrance below. */
 	.view-enter {
 		animation: view-in 0.35s ease;
 	}
@@ -14,6 +16,9 @@
 		}
 	}
 
+	/* Cards start invisible in markup and fade/slide in once. `forwards`
+	   keeps the animation's end state (opacity: 1) instead of snapping
+	   back to this rule's opacity: 0 the instant the animation finishes. */
 	.journey-card,
 	.institution-card {
 		opacity: 0;
@@ -28,6 +33,8 @@
 		}
 	}
 
+	/* Vestibular-disorder / motion-sensitivity setting: every animation
+	   above jumps straight to its end state instead of playing. */
 	@media (prefers-reduced-motion: reduce) {
 		.view-enter,
 		.journey-card,

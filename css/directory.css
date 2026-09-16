@@ -35,6 +35,10 @@
 		gap: var(--space-3);
 	}
 
+	/* Every direct child (h3, p, ul, dl, the actions row...) brings its own
+	   default margin. Zeroing them all and spacing with the flex `gap`
+	   above instead means adding a new optional section to a card never
+	   needs a matching margin rule here. */
 	.institution-card > * {
 		margin: 0;
 	}
@@ -135,6 +139,8 @@
 		color: var(--color-primary-dark);
 	}
 
+	/* Deliberately a warning yellow, not a brand token — it needs to read
+	   as "unverified data", not as part of the pink/purple campaign palette. */
 	.institution-placeholder-badge {
 		align-self: flex-start;
 		font-size: 0.7rem;
