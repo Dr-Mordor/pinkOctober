@@ -1,3 +1,7 @@
+/* Declares the cascade order up front: a rule in `layout` always beats one
+   in `base` regardless of selector specificity, and so on. This is what
+   actually decides which rule wins when two files disagree — not the
+   order of the <link> tags in index.html. */
 @layer base, layout, components, motion;
 
 :root {
@@ -28,7 +32,6 @@
 	--space-4: 1rem;
 	--space-5: 1.5rem;
 	--space-6: 2rem;
-	--space-7: 3rem;
 	--space-8: 4rem;
 
 	/* shape */

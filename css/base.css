@@ -5,6 +5,8 @@
 		box-sizing: border-box;
 	}
 
+	/* iOS Safari bumps text size on rotation to "help" readability; this
+	   opts out so the layout doesn't visibly resize on its own. */
 	html {
 		-webkit-text-size-adjust: 100%;
 	}
@@ -59,11 +61,16 @@
 		font: inherit;
 	}
 
+	/* :focus-visible (not :focus) so the ring shows for keyboard/switch
+	   navigation but not on every mouse/touch tap. */
 	:focus-visible {
 		outline: 3px solid var(--color-accent);
 		outline-offset: 2px;
 	}
 
+	/* script.js toggles [hidden] to swap views. The !important guards
+	   against a future component rule accidentally setting its own
+	   `display` and un-hiding a view that should be off-screen. */
 	[hidden] {
 		display: none !important;
 	}

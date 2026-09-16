@@ -10,6 +10,8 @@
 		min-height: 100vh;
 	}
 
+	/* `-inline` (not `-left`/`-right`) so this mirrors correctly if an
+	   English version ever ships next to the Arabic RTL layout. */
 	.container {
 		width: 100%;
 		max-width: var(--container-width);

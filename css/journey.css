@@ -66,10 +66,4 @@
 		margin: 0;
 		font-size: var(--fs-sm);
 	}
-
-	.home-footnote {
-		text-align: center;
-		font-size: var(--fs-sm);
-		margin-block-start: var(--space-7);
-	}
 }

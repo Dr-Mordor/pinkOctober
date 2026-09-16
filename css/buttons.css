@@ -1,4 +1,9 @@
 @layer components {
+	/* Base pill shape + spacing for every button/link that acts like a
+	   button. Variants below only override color and layout, never repeat
+	   this part — .back-btn and .browse-other get it by also carrying the
+	   .btn class in the markup, so there's exactly one place that defines
+	   "what a button looks like". */
 	.btn {
 		display: inline-flex;
 		align-items: center;
@@ -18,37 +23,33 @@
 		justify-content: center;
 	}
 
+	/* Secondary buttons: same shape as .btn, quieter color so they don't
+	   compete with the one primary (usually "call") action on a card. */
+	.btn-whatsapp,
+	.btn-email,
+	.btn-directions,
+	.browse-other,
+	.back-btn {
+		background: var(--color-surface);
+		color: var(--color-primary-dark);
+		border: 1px solid var(--color-border);
+	}
+
 	.btn-whatsapp,
 	.btn-email,
 	.btn-directions {
 		justify-content: center;
-		background: var(--color-surface);
-		color: var(--color-primary-dark);
-		border: 1px solid var(--color-border);
 	}
 
 	.browse-other {
 		display: flex;
 		width: fit-content;
 		margin: var(--space-6) auto 0;
-		background: var(--color-surface);
-		color: var(--color-primary-dark);
-		border: 1px solid var(--color-border);
 	}
 
 	.back-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
 		padding: var(--space-2) var(--space-4);
-		border-radius: var(--radius-pill);
-		border: 1px solid var(--color-border);
-		background: var(--color-surface);
-		color: var(--color-primary-dark);
 		font-size: var(--fs-sm);
-		font-weight: 700;
-		cursor: pointer;
 	}
 
 	@media (hover: hover) {
@@ -56,6 +57,9 @@
 			background: var(--color-primary-dark);
 		}
 
+		/* Wins over .btn:hover above by coming later at equal specificity —
+		   keeps secondary buttons on their quieter hover shade instead of
+		   inheriting the primary button's solid-dark hover. */
 		.browse-other:hover,
 		.back-btn:hover,
 		.btn-whatsapp:hover,
