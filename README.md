@@ -5,7 +5,7 @@ tech stack:
 - html
 - css (vanilla, modular — `css/*.css`, no build step)
 - javascript (vanilla ES modules, `script.js` + `js/`)
-- DB none (right now)
+- DB: Supabase (Postgres + Auth), called straight from the browser — see "Admin & analytics" below
 
 no npm, no bundler, no preprocessor. Open `index.html` directly (or serve the folder statically).
 
@@ -47,7 +47,23 @@ Institutions and services live in [data/institutions.json](data/institutions.jso
 
 The 8 institutions currently in the file are the ones named in the project brief, with their general services filled in — but contact details, pricing, insurance, referral, booking, and requirements are intentionally left blank and marked `isPlaceholder: true`, since the brief is explicit that nothing gets published before each institution reviews and signs off on its own entry. Fill those fields in as each institution's data is verified, and clear `isPlaceholder` once it is.
 
-There is no admin dashboard yet — editing this JSON file (by hand or via a future admin UI) and pushing/redeploying is the update workflow for this phase.
+The live source of truth is now the Supabase `institutions` table (edited from the admin page). `data/institutions.json` is kept as the seed and as an offline fallback: if the database can't be reached, the public guide loads this file instead.
+
+## Admin & analytics
+
+One admin page, [admin/index.html](admin/index.html) (`/admin/`, `noindex`), with two tabs:
+
+- **الجهات** — add, edit, hide/publish and delete institutions (same fields as the JSON above, plus `isPublished` and `sortOrder`).
+- **الإحصائيات** — sessions, which journey paths visitors pick (the "form choices"), and call/WhatsApp/email/directions clicks per institution, for the last 7/30/90 days.
+
+Supabase project: `pink-october-nablus` (`otyyvuqpluycwwdayvzr`). Browser code lives in `js/config.js` (URL + publishable key — safe to ship; row-level security does the protecting), `js/data.js` (load institutions), `js/track.js` (anonymous event logging: random per-tab id, event type, path, institution, button — no personal data), and `js/admin/*` (login, institutions CRUD, analytics; pulls `supabase-js` from jsDelivr).
+
+Tables (RLS on all): `institutions` (public can read published rows; admins write), `events` (public can insert, only admins can read), `admins` (allow-list of admin emails). `analytics_summary(days)` is an admin-only RPC.
+
+### Adding an admin
+
+1. Supabase dashboard → Authentication → Users → *Add user* (email + password).
+2. Run in the SQL editor: `insert into public.admins (email) values ('name@example.com');` (lower-case email).
 
 ### Running locally
 

@@ -1,5 +1,6 @@
 import { findPath } from "./js/paths.js";
 import { loadInstitutions } from "./js/data.js";
+import { track } from "./js/track.js";
 import { renderJourney, renderInstitutions, renderResultsHeading } from "./js/render.js";
 
 const viewHome = document.getElementById("viewHome");
@@ -19,6 +20,11 @@ const HOME_TITLE = appBarTitle.textContent;
 // already picked a path, so the app starts with an empty list and fills
 // it in once loadInstitutions() below settles.
 let institutions = [];
+
+// A path counts as "selected" once per visit to its results — whether the
+// visitor tapped a card or arrived on a deep link from a flyer/QR code —
+// not again on every re-render caused by back/forward navigation.
+let lastTrackedPath = null;
 
 function showView(view) {
 	viewHome.hidden = view !== viewHome;
@@ -43,6 +49,10 @@ function renderResults(pathKey) {
 	if (!path) {
 		renderHome(); // unrecognized hash (typo, stale link) — home is the safe fallback
 		return;
+	}
+	if (pathKey !== lastTrackedPath) {
+		lastTrackedPath = pathKey;
+		track("path_select", { pathKey });
 	}
 	backBtn.hidden = false;
 	appBarTitle.textContent = path.title;
@@ -70,6 +80,7 @@ function goToResults(pathKey) {
 }
 
 function goHome() {
+	lastTrackedPath = null;
 	if (location.hash) location.hash = "";
 }
 
@@ -77,7 +88,21 @@ backBtn.addEventListener("click", goHome);
 browseOtherBtn.addEventListener("click", goHome);
 window.addEventListener("hashchange", syncWithHash);
 
+// One delegated listener covers every contact button on every card, including
+// cards rendered later when the directory finishes loading.
+directoryList.addEventListener("click", (event) => {
+	const link = event.target.closest("a[data-action]");
+	const card = link?.closest("[data-institution-id]");
+	if (!card) return;
+	track("institution_action", {
+		pathKey: location.hash.slice(1),
+		institutionId: card.dataset.institutionId,
+		action: link.dataset.action,
+	});
+});
+
 renderJourney(journeyGrid, goToResults);
+track("page_view");
 syncWithHash();
 
 loadInstitutions()
