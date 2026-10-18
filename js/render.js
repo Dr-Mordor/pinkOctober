@@ -76,6 +76,7 @@ function institutionCard(inst) {
 	const card = document.createElement("article");
 	card.className = "institution-card";
 	card.setAttribute("role", "listitem");
+	card.dataset.institutionId = inst.id;
 
 	const services = inst.services?.length
 		? `<ul class="institution-services">${inst.services.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ul>`
@@ -103,12 +104,12 @@ function institutionCard(inst) {
 	// every institution gets a maps link even with nothing but a name.
 	const actions = [
 		inst.phone &&
-			`<a class="btn btn-call" href="tel:${escapeHtml(inst.phone.replace(/[^\d+]/g, ""))}">اتصال</a>`,
+			`<a class="btn btn-call" data-action="call" href="tel:${escapeHtml(inst.phone.replace(/[^\d+]/g, ""))}">اتصال</a>`,
 		inst.whatsapp &&
-			`<a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(inst.whatsapp.replace(/[^\d]/g, ""))}" target="_blank" rel="noopener">واتساب</a>`,
+			`<a class="btn btn-whatsapp" data-action="whatsapp" href="https://wa.me/${escapeHtml(inst.whatsapp.replace(/[^\d]/g, ""))}" target="_blank" rel="noopener">واتساب</a>`,
 		inst.email &&
-			`<a class="btn btn-email" href="mailto:${escapeHtml(inst.email)}">بريد إلكتروني</a>`,
-		`<a class="btn btn-directions" href="${mapsUrl(inst)}" target="_blank" rel="noopener">الاتجاهات</a>`,
+			`<a class="btn btn-email" data-action="email" href="mailto:${escapeHtml(inst.email)}">بريد إلكتروني</a>`,
+		`<a class="btn btn-directions" data-action="directions" href="${mapsUrl(inst)}" target="_blank" rel="noopener">الاتجاهات</a>`,
 	]
 		.filter(Boolean)
 		.join("");
