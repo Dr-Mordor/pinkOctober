@@ -76,6 +76,9 @@ function syncWithHash() {
 }
 
 function goToResults(pathKey) {
+	// An explicit tap is a new choice even if it repeats the last path (e.g.
+	// the visitor used the browser's back button to get home first).
+	lastTrackedPath = null;
 	location.hash = pathKey;
 }
 
