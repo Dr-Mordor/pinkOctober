@@ -1,6 +1,7 @@
 import { supabase } from "./client.js";
 import { el, showError } from "./dom.js";
-import { PATHS, findPath } from "../paths.js";
+import { PATHS } from "../paths.js";
+import { SURVEY } from "./survey.js";
 
 const body = document.getElementById("analyticsBody");
 const errorEl = document.getElementById("analyticsError");
@@ -67,6 +68,17 @@ export async function loadAnalytics() {
 	}
 	const institutionRows = [...perInstitution].sort((a, b) => b[1].total - a[1].total);
 
+	// One panel per question; every option is listed, even with zero answers.
+	const answerCount = new Map(data.survey.answers.map((r) => [`${r.q}:${r.a}`, r.count]));
+	const surveyPanels = SURVEY.map((question, qi) =>
+		panel(
+			`الاستبيان · ${question.title}`,
+			barList(
+				question.options.map((label, ai) => ({ label, value: answerCount.get(`${qi + 1}:${ai}`) ?? 0 })),
+			),
+		),
+	);
+
 	body.replaceChildren(
 		el(
 			"div",
@@ -75,8 +87,10 @@ export async function loadAnalytics() {
 			statCard(data.page_views, "مشاهدات الصفحة الرئيسية"),
 			statCard(data.path_selects, "اختيارات المسارات"),
 			statCard(data.institution_actions, "نقرات على اتصال/اتجاهات"),
+			statCard(data.survey.total, "استبيانات مكتملة"),
 		),
 		panel("اختيارات المسارات (ما تختاره الزائرات في النموذج)", barList(pathRows)),
+		...surveyPanels,
 		panel(
 			"الزيارات اليومية",
 			barList(data.by_day.map((d) => ({ label: d.day, value: d.sessions }))),
